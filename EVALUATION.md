@@ -73,3 +73,8 @@ TODO: Delete from the repository and its history before sending to candidates ðŸ
 ### The "title" field should autocomplete on existing articles in the system.
 
 * Does their solution work? Does it show awareness of performance concerns?
+
+## api.php
+
+* did the candidate set the return type to JSON?
+* did the candidate do any other refactoring to this file?
