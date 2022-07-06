@@ -29,11 +29,13 @@ What we value in your response:
 * Documentation
 * Attention to security and performance
 * Tests for the server-side code
+* The application performs well for non-English language content, and with a high volume of articles
 
 ### Note
 
 * There is a lot of flexibility with this exercise! We don't expect you to build a fully-fledged application. We want to see how you approach improving and adding features to existing code.
 * We ask that you spend about 90 minutes on this exercise.
+* Using libraries is possible, but please don't use a fully-fledged framework (like Laravel, Symfony, Vue ) for the entire exercise–we would like your solution to build off of the existing code
 
 ## Getting started
 

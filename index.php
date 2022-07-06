@@ -62,6 +62,7 @@ echo "</div>";
 echo "</div>";
 echo "</body";
 
+// TODO: Consider optimizing.
 function getWordCount() {
 	global $baseArticlePath;
 	$baseArticlePath = 'articles/';
