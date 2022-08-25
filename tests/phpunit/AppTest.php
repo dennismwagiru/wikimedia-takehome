@@ -4,12 +4,17 @@ namespace Tests;
 
 use App\App;
 
+/**
+ * @coversDefaultClass App
+ */
 class AppTest extends \PHPUnit\Framework\TestCase {
 
-	public function testGet() {
+	/**
+	 * @covers ::fetch
+	 */
+	public function testFetch() {
 		$app = new App();
-		// TODO: Fix failing test
 		$x = $app->fetch( [ 'title' => 'Foo' ] );
-		$this->assertContains( 'Use of metasyntactic variables', $x );
+		$this->assertStringContainsString( 'Use of metasyntactic variables', $x );
 	}
 }

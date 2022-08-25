@@ -1,49 +1,41 @@
-# WikiPHPedia
+This repository contains a "legacy code" application for viewing and editing text documents. Users of the application
+can:
 
-Dear candidate,
-
-This is a prototype of the new editing interface we're trying out for Wikipedia.[^1]
-
-Features:
-
-* Edit existing articles
-* Create new articles
-
-Technical notes:
-
-* Articles are stored in files on disk
-* Any user can edit any article
+* Create new pages
+* Edit any existing page
+* View a list of existing content
 
 ## Your task
 
-There are TODO comments throughout the code.
+In `index.php`, `api.php` and `main.js` you will find TODO comments. Using about 90 minutes of your time, your task
+is to work on these TODOs by writing PHP, JavaScript and code comments. *It is not reasonable to complete all the TODOs
+in 90 minutes–we will judge your submission based on the TODOs that you worked on, and not the ones you didn't do.*
 
-Your task is to implement code and/or pseudocode to address most of these TODO comments. (Working code is preferable!)
+Please use your creativity and judgment to show us how you fix bugs, add features, and refactor a not-so-well-written
+codebase.
 
-If you don't have time to address all the TODOs, comments or psuedo-code explaining how you would propose to address them are welcome.
+## How your response will be evaluated
 
-What we value in your response:
+What we'd like to see in your submission:
 
-* Quality commit message(s) (see https://www.mediawiki.org/wiki/Gerrit/Commit_message_guidelines/en)
-* Easy to read, well-organized code. Please refactor this mess!
-* Documentation
-* Attention to security and performance
-* Tests for the server-side code
-* The application performs well for non-English language content, and with a high volume of articles
+- [ ] You have refactored the codebase to improve its readability and documentation
+- [ ] You've added working JavaScript/PHP for at least some bug fixes / feature requests in the TODOs.
+- [ ] You have used Git to make your changes, with [quality commit message(s)](https://www.mediawiki.org/wiki/Gerrit/Commit_message_guidelines/en)
+- [ ] You've added some PHPUnit tests *or* comments/pseudocode explaining what PHPUnit/JavaScript tests you would add
+ if you had more time
+- [ ] You have added your own TODO/FIXME comments for performance/security/readability issues you have identified but
+ don't have time to fix.
 
 ### Note
 
-* There is a lot of flexibility with this exercise! We don't expect you to build a fully-fledged application. We want to see how you approach improving and adding features to existing code.
-* We ask that you spend about 90 minutes on this exercise.
-* Using libraries is possible, but please don't use a fully-fledged framework (like Laravel, Symfony, Vue ) for the entire exercise–we would like your solution to build off of the existing code
+You may use external libraries, but please don't use a fully-fledged framework (like Laravel or Symfony) for the
+entire exercise–we would like your solution to evolve the existing code, rather than replace it.
 
-## Getting started
+## Usage
 
-TODO: Clearer instructions
+Download [composer](https://getcomposer.org/), then:
 
-1. composer install
-2. composer serve - http://localhost:8888/ and http://localhost:8888/api.php
-3. composer seed
-4. composer test
-
-[^1] This is not a prototype of a new editing interface for Wikipedia. But let's pretend for this exercise.
+1. `composer install` – installs dependencies for the application
+2. `composer serve` - Serves the application, it is available at http://localhost:8989. The API is available at http://localhost:8989/api.php
+3. `composer seed` – Generate seed content for the application
+4. `composer test` – Lint files and run tests

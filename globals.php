@@ -2,6 +2,6 @@
 
 require_once 'vendor/autoload.php';
 
-global $baseArticlePath;
+global $wgBaseArticlePath;
 
-$baseArticlePath = 'articles/';
+$wgBaseArticlePath = 'articles/';
