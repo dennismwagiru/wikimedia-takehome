@@ -7,29 +7,40 @@ can:
 
 ## Your task
 
-In `index.php`, `api.php` and `main.js` you will find TODO comments. Using about 90 minutes of your time, your task
-is to work on these TODOs by writing PHP, JavaScript and code comments. *It is not reasonable to complete all the TODOs
-in 90 minutes–we will judge your submission based on the TODOs that you worked on, and not the ones you didn't do.*
+In `index.php`, `App.php`, `api.php` `main.js`, and `styles.css` you will find
+TODO comments. Using 90 minutes of your time, your task is to work through the
+*specific subset* of TODOs that were given to you in your Greenhouse
+instructions (e.g.  TODO A and B in main.js). For any TODOs that you didn't have
+time to complete, please leave some comments informing us of your approach if
+you had more time.
 
-Please use your creativity and judgment to show us how you fix bugs, add features, document code, and refactor a
-not-so-well-written codebase.
+Please use your creativity and judgment to show us how you fix bugs, add
+features, document code, and refactor a not-so-well-written codebase.
 
 ## How your response will be evaluated
 
-What we'd like to see in your submission:
+We are most interested in seeing how you think about the specific subset of
+TODOs that were given to you in your Greenhouse instructions rather than whether
+you have written perfect code in a very limited amount of time. Specifically,
+here are some areas we will broadly check:
 
-- [ ] You have refactored the codebase to improve its readability and documentation
-- [ ] You've added working JavaScript/PHP for some bug fixes / feature requests in the TODOs
-- [ ] You have used Git to make your changes, with [quality commit message(s)](https://www.mediawiki.org/wiki/Gerrit/Commit_message_guidelines/en)
-- [ ] You've added some PHPUnit tests *or* comments/pseudocode explaining what PHPUnit/JavaScript tests you would add
- if you had more time
-- [ ] You have added your own TODO/FIXME comments for performance/security/readability issues you have identified but
- don't have time to fix
+* Following the instructions: Have you done what was asked by the TODOs?
+* Code quality: Was the code changed to be cleaner than before and is any new code that was added clean? (e.g. Writing clear comments, logical naming, appropriate function length/scope etc. )
+* Accessibility: Did you consider the accessibility implications of your changes?
+* Security: Did you consider the security implications of your changes?
+* Performance: Did you consider the performance implications of your changes?
+
+We will also check that you have used Git to make your changes with [quality commit message(s)](https://www.mediawiki.org/wiki/Gerrit/Commit_message_guidelines/en).
+
+We will *not* evaluate any TODO that was not included in your Greenhouse
+instructions.
+
+Additionally, we will use this exercise to ask related questions in the
+in-person technical interview.
 
 ### Note
 
-You may use external libraries, but please don't use a fully-fledged framework (like Laravel or Symfony) for the
-entire exercise–we would like your solution to evolve the existing code, rather than replace it.
+Please do not use any additional external libraries for this exercise.
 
 ## Usage
 

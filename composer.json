@@ -9,9 +9,9 @@
 			"Tests\\": "tests/phpunit"
 		}
 	},
-    "require": {
-        "mediawiki/mediawiki-codesniffer": "^36.0",
-        "phpunit/phpunit": "^9.5",
+	"require": {
+		"mediawiki/mediawiki-codesniffer": "^36.0",
+		"phpunit/phpunit": "^9.5",
 		"joshtronic/php-loremipsum": "^2.1",
 		"ext-json": "*"
 	},
@@ -25,5 +25,8 @@
 			"@phpunit"
 		],
 		"seed": "php seedContent.php"
+	},
+	"config": {
+		"process-timeout": 0
 	}
 }
