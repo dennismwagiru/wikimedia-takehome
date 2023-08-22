@@ -9,6 +9,13 @@ require_once __DIR__ . '/vendor/autoload.php';
 $app = new App();
 // TODO B: Clean up the following code so that it's easier to see the different
 // routes and handlers for the API, and simpler to add new ones.
+// Additional Questions for IC6 and Above:
+// TODO C: Code Optimization - Address performance concerns in the current code
+// that you would address during refactoring.
+// TODO D:  Security - Identify any potential security vulnerabilities in this code.
+// TODO E: Documentation - Document this code to make it more understandable
+// for other developers.
+
 header( 'Content-Type: application/json' );
 if ( !isset( $_GET['title'] ) && !isset( $_GET['prefixsearch'] ) ) {
 	echo json_encode( [ 'content' => $app->getListOfArticles() ] );

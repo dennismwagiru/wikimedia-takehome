@@ -6,6 +6,12 @@ elements. Elements that appear to be horizontally or vertically centered in the
 spec, should be made that way here.
 */
 
+/* Additional TODO IC6 and Above
+* TODO B: Responsive Design - Make the page look like the design spec on tablet and mobile.
+* TODO C: Optimization - Showcase techniques to demonstrate performance optimization.
+* TODO D: Accessibility - Ensure that the page is accessible to users with disabilities.
+*/
+
 .header, .main {
 	padding-left: 16px;
 	padding-right: 16px;
