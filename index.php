@@ -15,15 +15,8 @@
 // could you optimize this to perform well with large amounts of data? Code
 // comments / psuedo-code welcome.
 
-// Additional Questions for IC6 and Above
-// TODO F: Implement a user authentication and authorization system to restrict
-// access to article creation and editing.
-
-// TODO G: Integrate a version control system to keep track of article revisions
-// and enable rollback functionality.
-
-// TODO H: Implement a simple unit test and integration test to ensure the
-// correctness of different parts of the application.
+// TODO F: Implement a simple unit test to ensure the correctness of different parts
+// of the application.
 
 use App\App;
 
