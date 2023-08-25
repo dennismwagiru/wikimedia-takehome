@@ -15,6 +15,9 @@
 // could you optimize this to perform well with large amounts of data? Code
 // comments / psuedo-code welcome.
 
+// TODO F: Implement a simple unit test to ensure the correctness of different parts
+// of the application.
+
 use App\App;
 
 require_once __DIR__ . '/vendor/autoload.php';
