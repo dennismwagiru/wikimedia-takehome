@@ -8,19 +8,16 @@ can:
 ## Your task
 
 In `index.php`, `App.php`, `api.php` `main.js`, and `styles.css` you will find
-TODO comments. Using 90 minutes of your time, your task is to work through the
-*specific subset* of TODOs that were given to you in your Greenhouse
-instructions (e.g.  TODO A and B in main.js). For any TODOs that you didn't have
-time to complete, please leave some comments informing us of your approach if
-you had more time.
+TODO comments. Using 90 minutes of your time, your task is to work through TODOs.
+For any TODOs that you didn't have time to complete, please leave some comments
+informing us of your approach if you had more time.
 
 Please use your creativity and judgment to show us how you fix bugs, add
 features, document code, and refactor a not-so-well-written codebase.
 
 ## How your response will be evaluated
 
-We are most interested in seeing how you think about the specific subset of
-TODOs that were given to you in your Greenhouse instructions rather than whether
+We are most interested in seeing how you think about the TODOs rather than whether
 you have written perfect code in a very limited amount of time. Specifically,
 here are some areas we will broadly check:
 
@@ -31,9 +28,6 @@ here are some areas we will broadly check:
 * Performance: Did you consider the performance implications of your changes?
 
 We will also check that you have used Git to make your changes with [quality commit message(s)](https://www.mediawiki.org/wiki/Gerrit/Commit_message_guidelines/en).
-
-We will *not* evaluate any TODO that was not included in your Greenhouse
-instructions.
 
 Additionally, we will use this exercise to ask related questions in the
 in-person technical interview.
