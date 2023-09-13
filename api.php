@@ -22,7 +22,7 @@ if ( !isset( $_GET['title'] ) && !isset( $_GET['prefixsearch'] ) ) {
 	$list = $app->getListOfArticles();
 	$ma = [];
 	foreach ( $list as $ar ) {
-		if ( strpos( strtolower( $ar ), strtolower( $_GET['prefixsearch'] ) ) !== false ) {
+		if ( strpos( strtolower( $ar ), strtolower( $_GET['prefixsearch'] ) ) === 0 ) {
 			$ma[] = $ar;
 		}
 	}
