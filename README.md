@@ -13,7 +13,9 @@ For any TODOs that you didn't have time to complete, please leave some comments
 informing us of your approach if you had more time.
 
 Please use your creativity and judgment to show us how you fix bugs, add
-features, document code, and refactor a not-so-well-written codebase.
+features, document code, and refactor a not-so-well-written codebase. Feel free
+to create new files if it helps organize your code better.
+
 
 ## How your response will be evaluated
 
