@@ -34,8 +34,12 @@
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	initFormSubmit();
+	initAutocomplete();
 });
 
+/**
+ * Initialise form to add an event listener to submit the form when the submit button is clicked.
+ */
 function initFormSubmit() {
 	const submitButton = document.querySelector( '.submit-button' );
 	const form = document.querySelector( 'form' );
@@ -46,4 +50,64 @@ function initFormSubmit() {
 			form.submit();
 		} );
 	}
+}
+
+/**
+ * Initialize autocomplete functionality.
+ */
+function initAutocomplete() {
+	const input = document.querySelector( 'input[name="title"]' );
+	const suggestionsBox = document.createElement( 'ul' );
+	suggestionsBox.classList.add( 'suggestions-box' );
+	input.parentNode.insertBefore( suggestionsBox, input.nextSibling );
+
+	let debounceTimer;
+
+	input.addEventListener( 'input', (e) => {
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(() => {
+			const search = input.value.trim();
+			if (search.length > 0) {
+
+				fetchSuggestions(search)
+					.then(titles => renderSuggestions(titles, suggestionsBox, input))
+					.catch(err => console.error(err));
+			}
+		}, 200);
+	})
+}
+
+/**
+ * Fetch suggestions from the server.
+ * @param prefix
+ * @returns {Promise<any>}
+ */
+function fetchSuggestions(prefix) {
+	return fetch(`api.php?prefixsearch=${prefix}`)
+		.then(
+			response => response.json(),
+			(err) => {
+				throw new Error('Failed to fetch suggestions.')
+			}
+		)
+		.then(data => data.content || []);
+}
+
+/**
+ * Render suggestions to the DOM.
+ * @param titles
+ * @param container
+ * @param input
+ */
+function renderSuggestions(titles, container, input) {
+	container.innerHTML = ''; // Clear previous results
+	titles.forEach(title => {
+		const li = document.createElement('li');
+		li.textContent = title;
+		li.addEventListener('click', () => {
+			input.value = title;
+			container.innerHTML = '';
+		});
+		container.appendChild(li);
+	})
 }
