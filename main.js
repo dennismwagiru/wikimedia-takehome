@@ -121,7 +121,7 @@ function fetchArticleContent(title) {
 	const textarea = document.querySelector( 'textarea[name="body"]' );
 	fetch(`api.php?title=${encodeURIComponent(title)}`)
 		.then(
-			response => response.text(),
+			response => response.json(),
 			(err) => {
 				throw new Error('Failed to fetch article content.')
 			}
