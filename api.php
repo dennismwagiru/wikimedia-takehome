@@ -1,32 +1,66 @@
 <?php
 
-use App\App;
+/**
+ * Simple JSON API for retriving and searching article content.
+ *
+ * Supported endpoints:
+ *  - GET /api?title={title} - Fetch the full content of an article
+ *  - GET /api?prefixsearch={prefix} - Get a list of articles that start with the given prefix
+ *  - GET /api - Fetch a list of all articles
+ *
+ * Response format:
+ * {
+ * 		"content": string | array,
+ * 		"error"?: string | null
+ * }
+ *
+ * Example URLs:
+ *  - /api?title=Foo
+ *  - /api?prefixsearch=Foo
+ *  - /api
+ *
+ * Notes:
+ * - Uses basename() to prevent path traversal attacks
+ * - no authentication required (public access).
+ * - Outputs proper HTTP status codes.
+ */
 
-// TODO A: Improve the readability of this file through refactoring and documentation.
+use App\App;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
 $app = new App();
-// TODO B: Clean up the following code so that it's easier to see the different
-// routes and handlers for the API, and simpler to add new ones.
-// TODO C: Address performance concerns in the current code.
-// that you would address during refactoring.
-// TODO D: Identify any potential security vulnerabilities in this code.
-// TODO E: Document this code to make it more understandable
-// for other developers.
+
+/**
+ * @param array $data
+ * @param int $status
+ * @return void
+ */
+function wfRespond( array $data, int $status = 200 ) {
+	http_response_code( $status );
+	echo json_encode( $data );
+	exit;
+}
 
 header( 'Content-Type: application/json' );
-if ( !isset( $_GET['title'] ) && !isset( $_GET['prefixsearch'] ) ) {
-	echo json_encode( [ 'content' => $app->getListOfArticles() ] );
-} elseif ( isset( $_GET['prefixsearch'] ) ) {
-	$list = $app->getListOfArticles();
-	$ma = [];
-	foreach ( $list as $ar ) {
-		if ( strpos( strtolower( $ar ), strtolower( $_GET['prefixsearch'] ) ) === 0 ) {
-			$ma[] = $ar;
-		}
+
+$title = isset( $_GET['title'] ) ? basename( $_GET['title'] ) : null;
+$prefix = isset( $_GET['prefixsearch'] ) ? $_GET['prefixsearch'] : null;
+
+if ( $title ) {
+	$content = $app->fetch( [ 'title' => $title ] );
+	if ( !$content ) {
+		wfRespond( [ 'error' => 'Article not found' ], 404 );
 	}
-	echo json_encode( [ 'content' => $ma ] );
-} else {
-	echo json_encode( [ 'content' => $app->fetch( $_GET ) ] );
+	wfRespond( [ 'content' => $content ] );
 }
+
+if ( $prefix ) {
+	$list = $app->getListOfArticles();
+	$matches = array_filter( $list, static function ( $item ) use ( $prefix ) {
+		return strpos( $item, $prefix ) === 0;
+	} );
+	wfRespond( [ 'content' => array_values( $matches ) ] );
+}
+
+wfRespond( [ 'content' => $app->getListOfArticles() ] );
