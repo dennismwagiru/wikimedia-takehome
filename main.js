@@ -1,6 +1,5 @@
 'use strict';
 
-( function () {
 	// NOTE: Please do not use any third-party libraries to implement the
 	// following as we want to keep the JS payload as small as possible. You may
 	// use ES6. There is no need to support IE11.
@@ -33,17 +32,18 @@
 	// to the user when API requests fail and provide a graceful degradation of
 	// functionality.
 
-	function getFormButtonToWork() {
-		const submitButton = document.querySelector( '.submit-button' );
-		const form = document.querySelector( 'form' );
+document.addEventListener( 'DOMContentLoaded', () => {
+	initFormSubmit();
+});
 
-		// Make form submit button work when submit is clicked.
+function initFormSubmit() {
+	const submitButton = document.querySelector( '.submit-button' );
+	const form = document.querySelector( 'form' );
+
+	if (submitButton && form) {
 		submitButton.addEventListener( 'click', (e) => {
 			e.preventDefault();
 			form.submit();
 		} );
 	}
-
-	// Waiting for page to load which takes about 1.5 seconds on my machine.
-	setTimeout( getFormButtonToWork, 1500);
-}() )
+}
