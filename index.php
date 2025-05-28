@@ -1,7 +1,5 @@
 <?php
 
-// TODO A: Improve the readability of this file through refactoring and documentation.
-
 // TODO B: Review the HTML structure and make sure that it is valid and contains
 // required elements. Edit and re-organize the HTML as needed.
 
@@ -24,53 +22,91 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $app = new App();
 
-echo "<head>
+echo <<<HTML
+<head>
 <link rel='stylesheet' href='http://design.wikimedia.org/style-guide/css/build/wmui-style-guide.min.css'>
 <link rel='stylesheet' href='styles.css'>
 <script src='main.js'></script>
-</head>";
+</head>
+HTML;
 
 $title = '';
 $body = '';
 if ( isset( $_GET['title'] ) ) {
 	$title = htmlentities( $_GET['title'] );
-	$body = $app->fetch( $_GET );
 	$body = file_get_contents( sprintf( 'articles/%s', $title ) );
 }
 
-$wordCount = wfGetWc();
-echo "<body>";
-echo "<div id=header class=header>
+/**
+ * Render the header of the page
+ *
+ * @param string $wordCount
+ * @return void
+ */
+function wfRenderHeader( string $wordCount ) {
+	echo <<<HTML
+<body>
+<div id=header class=header>
 <a href='/'>Article editor</a><div>$wordCount</div>
-</div>";
-echo "<div class='page'>";
-echo "<div class='main'>";
-echo "<h2>Create/Edit Article</h2>
+</div>
+<div class='page'>
+<div class='main'>
+HTML;
+}
+
+/**
+ * Render the form for creating/editing an article
+ *
+ * @param string $title
+ * @param string $body
+ * @return void
+ */
+function wfRenderForm( string $title = '', string $body = '' ) {
+	$titleEsc = htmlspecialchars( $title, ENT_QUOTES );
+	$bodyEsc = htmlspecialchars( $body, ENT_QUOTES | ENT_SUBSTITUTE );
+	echo <<<HTML
+<h2>Create/Edit Article</h2>
 <p>Create a new article by filling out the fields below. Edit an article by typing the beginning of the title in the title field, selecting the title from the auto-complete list, and changing the text in the textfield.</p>
 <form action='index.php' method='post'>
-<input name='title' type='text' placeholder='Article title...' value=$title>
+<input name='title' type='text' placeholder='Article title...' value="$titleEsc">
 <br />
-<textarea name='body' placeholder='Article body...' >$body</textarea>
+<textarea name='body' placeholder='Article body...' >$bodyEsc</textarea>
 <br />
 <a class='submit-button' href='#' />Submit</a>
 <br />
 <h2>Preview</h2>
-$title\n\n
-$body
+<div class="preview">
+<pre>$titleEsc\n\n$bodyEsc</pre>
+</div>
+
 <h2>Articles</h2>
 <ul>
 <li><a href='index.php?title=Foo'>Foo</a></li>
 </ul>
-</form>";
+</form>
+HTML;
+}
+
+$wordCount = wfGetWc();
+
+wfRenderHeader( $wordCount );
+wfRenderForm( $title, $body );
 
 if ( $_POST ) {
 	$app->save( sprintf( "articles/%s", $_POST['title'] ), $_POST['body'] );
 }
-echo "</div>";
-echo "</div>";
-echo "</body";
+echo <<<HTML
+</div>
+</div>
+</body>
+HTML;
 
-function wfGetWc() {
+/**
+ * Get the word count of all articles
+ *
+ * @return string
+ */
+function wfGetWc(): string {
 	global $wgBaseArticlePath;
 	$wgBaseArticlePath = 'articles/';
 	$wc = 0;
