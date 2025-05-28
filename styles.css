@@ -1,18 +1,95 @@
 /*
-* TODO A: Modify or add styles to make the page look *roughly* like the design
-spec file at `design-spec/layout.png`. Don't worry about making it pixel perfect
-or matching the colors/spacing exactly. Instead, focus on the alignment of
-elements. Elements that appear to be horizontally or vertically centered in the
-spec, should be made that way here.
 * TODO B: Ensure that the page is responsive for tablet and mobile.
 */
 
+body {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.header {
+	padding: 18px 30px;
+	border-bottom: 1px solid #dee2e6;
+}
+
+.header div {
+	float: right;
+}
+
 .header, .main {
-	padding-left: 16px;
-	padding-right: 16px;
 	line-height: normal;
 }
 
-.header a {
-	float: left;
+.page {
+	padding: 20px;
+	height: 100%;
+}
+
+.main {
+	max-width: 900px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 25px 30px;
+	border-radius: 8px;
+}
+
+.main p {
+	margin-bottom: 25px;
+}
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+form input[name='title'],
+form textarea[name='body'] {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 15px;
+	border: 1px solid #ced4da;
+	border-radius: 2px;
+	box-sizing: border-box;
+}
+
+form input[type='title'] {
+	margin-bottom: 15px;
+}
+
+form textarea[name='body'] {
+	min-height: 200px;
+}
+
+a.submit-button {
+	display: inline-block;
+	padding: 8px 15px;
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	border-radius: 2px;
+	text-decoration: none;
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+a.submit-button:hover {
+	background-color: #0056b3;
+}
+
+.preview {
+	margin-top: 5px;
+}
+
+.preview pre {
+	background-color: #f8f9fa;
+	border: 1px solid #e9ecef;
+	padding: 15px;
+	border-radius: 5px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	min-height: 50px;
 }
