@@ -83,7 +83,7 @@ function initAutocomplete() {
  * @returns {Promise<any>}
  */
 function fetchSuggestions(prefix) {
-	return fetch(`api.php?prefixsearch=${prefix}`)
+	return fetch(`api.php?prefixsearch=${encodeURIComponent(prefix)}`)
 		.then(
 			response => response.json(),
 			(err) => {
@@ -107,7 +107,27 @@ function renderSuggestions(titles, container, input) {
 		li.addEventListener('click', () => {
 			input.value = title;
 			container.innerHTML = '';
+			fetchArticleContent(title);
 		});
 		container.appendChild(li);
 	})
+}
+
+/**
+ * Fetch article content from the server.
+ * @param title
+ */
+function fetchArticleContent(title) {
+	const textarea = document.querySelector( 'textarea[name="body"]' );
+	fetch(`api.php?title=${encodeURIComponent(title)}`)
+		.then(
+			response => response.text(),
+			(err) => {
+				throw new Error('Failed to fetch article content.')
+			}
+		)
+		.then(data => {
+			textarea.value = data.content || ''
+		})
+		.catch(err => console.error(err));
 }
