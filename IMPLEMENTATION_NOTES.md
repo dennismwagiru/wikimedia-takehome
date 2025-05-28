@@ -15,4 +15,11 @@ After refactoring, i realized the page layout was fragmented and hard to follow.
 
 ### Security Improvements
 * Escaped all user-supplied output (`$_GET`, `$_POST`) using `htmlspecialchars()` with appropriate flags (`ENT_QUOTES | ENT_SUBSTITUTE`) to prevent XSS and encoding issues.
-*
+
+### Styling and Responsiveness
+To improve the layout and mobile responsiveness:
+* I added new styles to `styles.css` targeting the layout containers.
+
+Optional enhancements planned but not implemented
+* A media query to further optimise mobile layout below 600px width
+* `:focus` state styling for form fields to improve keyboard accessibility
